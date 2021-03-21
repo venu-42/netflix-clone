@@ -1,0 +1,46 @@
+.banner{
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+}
+.banner__content{
+    position: absolute;
+    bottom:20%;
+    color:var(--white);
+    margin-left: 20px;
+}
+.banner__title{
+    font:800 40px"Gordita", sans-serif;
+    margin-bottom: 20px;
+}
+.banner__btn{
+    padding:2px 10px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    background-color: #555;
+    color:white;
+    border-radius: 2px;;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all .2s;
+}
+.banner__btn:focus{
+    box-shadow: none;
+    outline: none;;
+}
+.banner__btn:hover{
+    color:black;
+    background-color: white;
+}
+.banner__desc{
+    margin-top:15px;
+    font-size: 14px;
+    width:40%;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
