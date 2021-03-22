@@ -1,0 +1,119 @@
+.loginScreen {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(
+      180deg,
+      rgb(0, 0, 0, 0.5) 0%,
+      rgb(0, 0, 0, 0.5) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.651) 0%,
+      transparent 60%,
+      rgba(0, 0, 0, 0.623) 100%
+    ),
+    url("https://dkr0pu7ej5xex.cloudfront.net/wp-content/uploads/2017/04/24135159/Netflix-Background.jpg");
+  background-size: cover;
+}
+.loginScreen__header {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  width: 100px;
+}
+.signupbtn {
+  padding: 8px 20px;
+  font-size: 14px;
+  background-color: red;
+  color: white;
+  border: none;
+  display: block;
+  align-self: center;
+  outline: none;
+}
+.signupbtn:focus {
+  outline: none;
+}
+.loginScreen__body {
+  width: 60%;
+  min-width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.loginScreen__body h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+.loginScreen__body > h3 {
+  font-weight: 400;
+}
+.loginScreen__body > p {
+  font-weight: 200;
+}
+.loginScreen__body input {
+  padding: 10px 10px;
+  outline: none;
+  width: 60%;
+  max-width: 600px;
+}
+
+.submitBtn {
+  height: 50px;
+  padding: 5px 10px;
+  border: none;
+  background-color: red;
+  color: white;
+  margin:5px 0;
+}
+
+.signInModal {
+  background-color: rgb(0, 0, 0, 0.5);
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 60%;
+  min-width: 330px;
+  max-width: 40%;;
+  text-align: left;
+}
+
+.signInModal input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  outline: none;
+}
+.signInModal .submitBtn {
+  width: 100%;
+}
+.signInModal p{
+    color:#999;
+}
+.signInModal a{
+    color:white;
+}
+.signInModal a:hover{
+    text-decoration: underline;
+}
+.netflixBtn{
+
+}
+.googleBtn{
+  background-color: white;
+  color:black
+}

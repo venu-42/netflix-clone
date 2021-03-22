@@ -1,0 +1,28 @@
+.details__section{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display: flex;
+    width:40vw;
+    background-color: rgba(34, 34, 34, 0.411);
+    padding: 20px;
+}
+.details__section img{
+    width:50px;
+    margin: 0px 10px;
+    object-fit: contain;
+}
+.side__section{
+    padding:10px;
+    flex:1 0 auto;
+    color: white;
+}
+.side__section .submitBtn{
+    width:100%;
+}
+.user__email{
+    text-align: center;
+    padding:10px;
+    background-color: rgba(128, 128, 128, 0.39);
+}
