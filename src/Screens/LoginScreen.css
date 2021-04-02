@@ -99,7 +99,8 @@
   outline: none;
 }
 .signInModal .submitBtn {
-  width: 100%;
+  width: 47%;
+  margin:5px
 }
 .signInModal p{
     color:#999;
@@ -110,10 +111,11 @@
 .signInModal a:hover{
     text-decoration: underline;
 }
-.netflixBtn{
 
-}
-.googleBtn{
+.submitBtn.googleBtn{
   background-color: white;
-  color:black
+  color:black;
+  width:70%;
+  margin: 5px auto;
+  display: block;
 }

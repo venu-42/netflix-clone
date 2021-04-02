@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter as Router, Link, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import { login, logout, selectUser } from "./features/userSlice";
 import { auth } from "./firebase";
@@ -9,7 +9,6 @@ import LoginScreen from "./Screens/LoginScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
 
 function App() {
-  const history = useHistory();
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,20 +33,17 @@ function App() {
 
   return (
     <div className="app">
-      {!user ? (
-        <LoginScreen />
-      ) : (
         <Router>
           <Switch>
+            {!user&&<Route path='/' component={LoginScreen} />}
             <Route path="/profile">
               <ProfileScreen />
             </Route>
-            <Route exact path="/">
+            <Route path="/">
               <HomeScreen />
             </Route>
           </Switch>
         </Router>
-      )}
     </div>
   );
 }

@@ -1,31 +1,48 @@
 import React, { useRef, useState } from "react";
 import "./LoginScreen.css";
-import { auth } from "../firebase";
+import { auth,googleProvider,facebookProvider} from "../firebase";
 import firebase from 'firebase'
+import netflixLogo from "../images/kisspng-netflix-streaming-media-television-show-logo-netflix-logo-5b35b03bb4e9d0.753613021530245179741.png";
+import { useHistory } from "react-router-dom";
 
 function LoginScreen() {
   const emailref = useRef(null);
   const passwordref = useRef(null);
   const [sign, setSign] = useState(false);
+  const history=useHistory();
 
+  const redirectToHome=()=>{
+    history.push('/');
+  }
   const signInWithGoogle=(e)=>{
     e.preventDefault();
     
-    let provider = new firebase.auth.GoogleAuthProvider();
 
-    auth.signInWithPopup(provider)
+    auth.signInWithPopup(googleProvider)
     .then((result)=>{
       console.log('Ho,here is the result',result);
     })
+    // .then(redirectToHome)
     .catch((error)=>{
       console.log('google Auth failed!!',error.message);
+    })
+    redirectToHome();
+  }
+
+  const signInwithFacebook=(e)=>{
+    e.preventDefault();
+    // facebookProvider.addScope('user_birthday');
+    auth.signInWithPopup(facebookProvider)
+    .then(user=>{
+      console.log('facebook',user);
+    })
+    .catch((error)=>{
+      alert(error.message);
     })
   }
 
   const register = (e) => {
     e.preventDefault();
-
-
 
     auth
       .createUserWithEmailAndPassword(
@@ -33,7 +50,10 @@ function LoginScreen() {
         passwordref.current.value
       )
       .then((user) => console.log(user))
+      .then(redirectToHome)
       .catch((error) => alert(error.message));
+
+      
   };
 
   const signIn = (e) => {
@@ -41,6 +61,7 @@ function LoginScreen() {
 
     auth.signInWithEmailAndPassword(emailref.current.value,passwordref.current.value)
     .then(user=>console.log(user))
+    .then(redirectToHome)
     .catch(error=>alert(error.message));
   };
 
@@ -52,20 +73,20 @@ function LoginScreen() {
           <h3>Sign In</h3>
           <form>
             <input ref={emailref} type="email" placeholder="Email Address" />
-            <input ref={passwordref} type="password" placeholder="password" />
+            <input ref={passwordref} type="password" placeholder="Password" />
             <button className="submitBtn" type="submit" onClick={signIn}>
               Sign In
             </button>
+            <button className='submitBtn netflixBtn' onClick={(e) => register(e)}>
+              Sign Up 
+            </button>
             <p className="mt-3">
-              New To Netflix?{" "}
-              <button className='submitBtn netflixBtn' onClick={(e) => register(e)}>
-                Sign Up Now
-              </button>
+              
               <button className='submitBtn googleBtn' onClick={signInWithGoogle}>
-                <img src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/google.png" width="30px"/> &nbsp;Sign Up With Google
+                <img src="https://pngimg.com/uploads/google/google_PNG19635.png" width="30px"/> &nbsp;Sign Up With Google
               </button>
-              <button className='submitBtn googleBtn' onClick={()=>{}}>
-                <img src="https://pngimg.com/uploads/github/github_PNG83.png" width="30px"/> &nbsp;Sign Up With GitHub
+              <button className='submitBtn googleBtn' onClick={signInwithFacebook}>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" width="30px"/> &nbsp;Sign Up With Facebook
               </button>
             </p>
           </form>
@@ -78,7 +99,7 @@ function LoginScreen() {
     <div className="loginScreen">
       <div className="loginScreen__header">
         <img
-          src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+          src={netflixLogo}
           alt="Netflix logo"
           className="logo"
         />
